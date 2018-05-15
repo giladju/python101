@@ -10,3 +10,6 @@ def hello():
 def different():
     print ('DEBUG: A different world')
     return 'A different world'
+
+if __name__ == '__main__':
+    app.run(debug=True, host='0.0.0.0')

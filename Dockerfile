@@ -9,9 +9,11 @@ COPY stable-req.txt ./
 RUN pip install --no-cache-dir -r stable-req.txt
 COPY webserver.py ./
 RUN chmod +x webserver.py
-EXPOSE 5000:5000
+EXPOSE 5000
 ENV LC_ALL C.UTF-8
 ENV LANG C.UTF-8
 ENV FLASK_APP webserver.py
+# ENV PATH "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 # CMD ["FLASK_APP=webserver.py flask run"]
-CMD ["which python"]
+ENTRYPOINT ["python"]
+CMD ["webserver.py"]

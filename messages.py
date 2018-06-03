@@ -27,13 +27,13 @@ class MessageStore:
 
         return current_message[0]
 
-
-message_store = MessageStore()
-
-id = message_store.add_message('testing123')
-
-print(id)
-
-message = message_store.get_message(id)
-
-print(message.content)
+#
+# message_store = MessageStore()
+#
+# id = message_store.add_message('testing123')
+#
+# print(id)
+#
+# message = message_store.get_message(id)
+#
+# print(message.content)

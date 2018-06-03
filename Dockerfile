@@ -8,6 +8,7 @@ RUN apt-get update \
 COPY stable-req.txt ./
 RUN pip install --no-cache-dir -r stable-req.txt
 COPY webserver.py ./
+COPY messages.py ./
 RUN chmod +x webserver.py
 EXPOSE 5000
 ENV LC_ALL C.UTF-8

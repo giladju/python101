@@ -1,18 +1,39 @@
-messages = []
+import uuid
 
-count = 0
+class Message:
+    def __init__(self,id,content):
+        self.id = id
+        self.content = content
 
-def new_message(message_content):
-    global count
-    count += 1
-    print(count)
-    messages.append({'id':str(count), 'message':message_content})
-    return message_content
+class MessageStore:
+    messages = []
 
-def get_message(msg_id):
-    current_message = ([d for d in messages if d['id'] == msg_id])
-    print('#################################')
-    print(current_message)
-    print('#################################')
-    message_body = (current_message[0].get('message'))
-    return message_body
+    def __init__(self):
+        print("message store created")
+
+
+    def add_message(self,content):
+        id = str(uuid.uuid1())
+        self.messages.append(Message(id, content))
+        print('New message uuid: ' + id + " with content: " + content)
+        return id
+
+    def get_message(self,id):
+        print('Getting message by ID: ' + id)
+        current_message = [msg for msg in self.messages if msg.id == id]
+        # print('#################################')
+        # print("Message is: " + str(current_message[0].content))
+        # print('#################################')
+
+        return current_message[0]
+
+
+message_store = MessageStore()
+
+id = message_store.add_message('testing123')
+
+print(id)
+
+message = message_store.get_message(id)
+
+print(message.content)
